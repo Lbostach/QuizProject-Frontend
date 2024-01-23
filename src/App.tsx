@@ -15,7 +15,7 @@ const App: React.FC = () => {
                         </Link>
                     </div>
                     <div className="text-s text-center mt-8">
-                        ((c) 2023 PROJECT)
+                        idek
                     </div>
                 </div>
             </Route>
