@@ -19,11 +19,12 @@ const CheckboxCard: React.FC<CheckboxCardProps> = ({ label, isCorrect, isSubmitt
 
 const QuestionComponent: React.FC = () => {
   const [questionText, setQuestionText] = useState("");
-  const [answers, setAnswers] = useState<{ answerText: string, isCorrect: boolean }[]>([]);
+  const [answers, setAnswers] = useState<{ answerText: string, correct: boolean }[]>([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [questionId] = useState(Math.floor(Math.random() * 3) + 1);
 
   useEffect(() => {
-    const questionId = Math.floor(Math.random() * 3) + 1; // generates a random number between 1 and 10
+     // generates a random number between 1 and 10
   
     fetch(`http://localhost:8089/api/questions/${questionId}`)
       .then(response => response.json())
@@ -39,7 +40,7 @@ const QuestionComponent: React.FC = () => {
       })
       
       .catch(error => console.error('Error:', error));
-  }, []);
+  }, [questionId]);
 
   return (
     <div className="bg-purple-100">
@@ -48,7 +49,7 @@ const QuestionComponent: React.FC = () => {
       </div>
       <div className="flex flex-col justify-center items-center">
       {answers.map((answer, index) => (
-        <CheckboxCard key={index} label={answer.answerText} isCorrect={answer.isCorrect} isSubmitted={isSubmitted} />
+        <CheckboxCard key={index} label={answer.answerText} isCorrect={answer.correct} isSubmitted={isSubmitted} />
       ))}
       </div>
       <div className="flex justify-center">
