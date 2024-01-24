@@ -34,7 +34,7 @@ const QuestionComponent: React.FC = () => {
     fetch(`http://localhost:8089/api/questions/${questionId}/answers`)
       .then(response => response.json())
       .then(data => {
-        setAnswers(data.answers);
+        setAnswers(data);
       })
       
       .catch(error => console.error('Error:', error));
