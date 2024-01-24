@@ -30,6 +30,7 @@ const QuestionComponent: React.FC = () => {
       .then(data => {
         setQuestionText(data.questionText);
       })
+      .then(data => console.log(data))
       .catch(error => console.error('Error:', error));
     fetch(`http://localhost:8089/api/questions/${questionId}/answers`)
       .then(response => response.json())
@@ -42,7 +43,7 @@ const QuestionComponent: React.FC = () => {
 
   return (
     <div className="bg-purple-100">
-      <h1>{questionText}</h1>
+      <h1>{questionText} hi</h1>
       {answers.map((answer, index) => (
         <CheckboxCard key={index} label={answer.answerText} isCorrect={answer.isCorrect} isSubmitted={isSubmitted} />
       ))}
