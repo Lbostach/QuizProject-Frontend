@@ -7,10 +7,32 @@ import {
 } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import axios from 'axios';
+
+const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  event.preventDefault();
+
+  const question = document.getElementById('question').value;
+
+  // Replace with your actual API endpoint
+  const url = 'http://localhost:8089/api/questions';
+
+  try {
+    const response = await axios.post(url, {
+      question,
+      // Add other form data as needed
+    });
+
+    console.log(response.data);
+  } catch (error) {
+    console.error('Error posting data', error);
+  }
+};
 
 
 export function PostComponent() {
   return (
+    <form onSubmit={handleSubmit}>
     <Card className="w-full max-w-3xl">
       <CardHeader>
         <CardTitle>Post a question</CardTitle>
@@ -127,5 +149,6 @@ export function PostComponent() {
         </div>
       </CardContent>
     </Card>
+    </form>
   );
 }
