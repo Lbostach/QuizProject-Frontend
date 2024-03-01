@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import QuestionComponent from './QuestionComponent';
+import { PostComponent } from './PostComponent';
 
 const App: React.FC = () => {
     const fullText = 'Take the Quiz';
@@ -21,6 +22,7 @@ const App: React.FC = () => {
     }, [counter]);
     return (
         <Router>
+          <Route path="/post" component={PostComponent} />
             <Route path="/question" component={QuestionComponent} />
             <Route path="/" exact>
             <div className="bg-pink-100">
