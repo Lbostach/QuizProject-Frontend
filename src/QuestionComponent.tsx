@@ -34,7 +34,7 @@ const QuestionComponent: React.FC = () => {
   const [questionText, setQuestionText] = useState("");
 
   const [answers, setAnswers] = useState<
-    { answerText: string; correct: boolean }[]
+    { answerText: string; isCorrect: boolean }[]
   >([]);
 
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -97,7 +97,7 @@ const QuestionComponent: React.FC = () => {
           <CheckboxCard
             key={index}
             label={answer.answerText}
-            isCorrect={answer.correct}
+            isCorrect={answer.isCorrect}
             isSubmitted={isSubmitted}
           />
         ))}
